@@ -11,7 +11,10 @@ def load_data(file):
     df.columns = df.columns.str.strip()
     
     def clean_num(s):
-        return pd.to_numeric(s.astype(str).str.replace(r'[^0-9.\-]', '', regex=True), errors="coerce")
+        return pd.to_numeric(
+            s.astype(str).str.replace(r'[^0-9.\-]', '', regex=True), 
+            errors="coerce"
+        )
 
     for col in ["NS (M EUR)", "Volume", "# SKUs"]:
         if col in df.columns:
